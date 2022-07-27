@@ -1,5 +1,5 @@
 <?php
-include("insert.php");
+include("class.php");
 ?>
 
 <!DOCTYPE html>
@@ -24,20 +24,11 @@ include("insert.php");
       $save= new Insert;
       
       if(isset($_POST["save"])){
-       
-          
-
           $save->save($_POST);
         
          }
-    
-       
-       
 
       ?>
-
-      
-
       <form method="POST" >
   <div class="form-group">
     <label for="exampleInputEmail1">Your Name</label>
@@ -75,16 +66,32 @@ include("insert.php");
 
        <table class="table">
 
+         <tr>
          <th>#sl NO</th>
          <th>Name</th>
          <th>Email</th>
          <th>Status</th>
+         </tr>
 
              <?php 
                $result= $save->showdata();
 
-                $result->fetch_assoc();
-                $result["name"];
+               while($res= $result->fetch_assoc()){
+             
+             
+             //fetch data from db
+             echo 
+                '<tr>
+                <td>'.$res['id'].' </td>
+                <td>'.$res['name'].' </td>
+                <td>'.$res['email'].' </td>
+                <td>'.$res['status'].' </td>
+              </tr>';
+
+               }
+               
+               
+              
       
        
              
