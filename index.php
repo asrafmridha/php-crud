@@ -1,3 +1,7 @@
+<?php
+include("insert.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,20 +16,50 @@
     
 
      <div class="row mt-5">
+
+   
       <div class="col-md-6 offset-md-3">
 
-      <form>
+<?php
+      $save= new Insert;
+      
+      if(isset($_POST["save"])){
+       
+          
+
+          $save->save($_POST);
+        
+         }
+    
+       
+       
+
+      ?>
+
+      
+
+      <form method="POST" >
   <div class="form-group">
     <label for="exampleInputEmail1">Your Name</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name"  name="name">
+    
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <label for="exampleInputPassword1">Your Email</label>
+    <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Enter Email" name="email">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Status</label>
+      <select class="form-control" name="status" id="">
+        <option value="#">---Select--</option>
+      <option value="1">Active</option>
+      <option value="2">Inactive</option>
+      <option value="3">Suspend</option>
+      </select>
   </div>
   
-  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+  <button name="save" type="submit" class="btn btn-primary mt-3">Submit</button>
 </form>
 
       </div>
@@ -34,5 +68,38 @@
    
 
    </form>
+
+
+    <div class="row">
+      <div class="col-md-6 offset-3">
+
+       <table class="table">
+
+         <th>#sl NO</th>
+         <th>Name</th>
+         <th>Email</th>
+         <th>Status</th>
+
+             <?php 
+               $result= $save->showdata();
+
+                $result->fetch_assoc();
+                $result["name"];
+      
+       
+             
+             
+             
+             ?>
+       </table>
+      </div>
+    </div>
+
+     
+
+
+   
+   
+
 </body>
 </html>
