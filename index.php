@@ -11,6 +11,10 @@ include("class.php");
     <title>Db connect by constructor</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+   <!-- jquery table plugin link  -->
+
+   <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 
     <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 </head>
@@ -68,6 +72,8 @@ include("class.php");
 
        <table class="table">
 
+       <thead>
+
          <tr>
          <th>#sl NO</th>
          <th>Name</th>
@@ -77,46 +83,48 @@ include("class.php");
 
          </tr>
 
+        </thead>
+        <tbody>
+
              <?php 
                $result= $save->showdata();
-
-               
-
+               $slno=1;
                while($res= $result->fetch_assoc()){
-             
-                $slno= $res['id']=1;
              //fetch data from db
-            
              echo 
                 '<tr>
-                <td>'.$res['id'].' </td>
+                <td>'.$slno.' </td>
                 <td>'.$res['name'].' </td>
                 <td>'.$res['email'].' </td>
                 <td>'.$res['status'].' </td>
                   <td>
                   
-                  <button class="btn btn-info"> <i class="fa fa-solid fa-pen-to-square"></i> </button>
+                  <a  class="btn btn-info"> <i class="fa fa-solid fa-pen-to-square"></i> </a>
 
-                  <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                  
-                  
+                  <a href="delete.php?uid='.$res['id'].'" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                   </td>
-
               </tr>';
+              $slno++;
+
+             
                }
-             
-               
-               
-              
-      
-       
-             
-             
-             
+        
              ?>
+
+              </tbody>
        </table>
       </div>
     </div>
+
+
+    <script>
+
+      $(document).ready( function () {
+          $('#myTable').DataTable();
+      } );
+    </script>
+
+     <script src="cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> 
 
 </body>
 </html>
