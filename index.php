@@ -52,6 +52,16 @@ include("class.php");
 
          }
 
+         if(isset($_GET['update'])){
+          $id=$_GET['update'];
+          $name=$_GET['name'];
+          $email=$_GET['email'];
+          $status=$_GET['status'];
+
+          echo $save->update($id,$name,$email,$status);
+
+         }
+
          
 
       ?>
@@ -195,34 +205,24 @@ include("class.php");
       <form>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Name</label>
-    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name=""  value="<?php echo $res['name']; ?>" >
+    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name"  value="<?php echo $res['name']; ?>" >
   
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Email</label>
-    <input type="email" class="form-control" id="exampleInputPassword1" name="" value="<?php echo $res['email']; ?>">
+    <input type="email" class="form-control" id="exampleInputPassword1" name="email" value="<?php echo $res['email']; ?>">
   </div>
 
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Status</label>
-    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="" value="<?php echo $res['status']; ?>">
+    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="status" value="<?php echo $res['status']; ?>">
  
-  
-  
-  <button type="submit" class="btn btn-primary mt-2">Submit</button>
-</form>
-
-
-
-
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-         
-        <form method="GET">
 
-        <button class="btn btn-danger" name="deleteid" value="<?php echo $res['id']; ?>">Delete</button> 
+        <button class="btn btn-success" name="update" value="<?php echo $res['id']; ?>">Update</button> 
 
         </form>
       </div>
@@ -231,11 +231,6 @@ include("class.php");
   </div>
               </div>
               
-
-        
-   
-         
-    
              
            <?php  
          }

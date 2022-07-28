@@ -59,9 +59,9 @@
         }
       }
 
-      function update($id,$name,$email){
+      function update($id,$name,$email,$status){
 
-        $update=$this->con->query("UPDATE tbl_student SET name=$name, email=$email WHERE id=$id ");
+        $update=$this->con->query("UPDATE tbl_student SET name='$name', email='$email' , status='$status' WHERE id='$id' ");
       }
 
       function inactive($id){
