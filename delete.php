@@ -8,5 +8,7 @@
    
    ?> 
 
+  <?php echo "delete Successfully"; ?>
+
 
   

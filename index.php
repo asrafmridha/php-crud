@@ -88,25 +88,35 @@ include("class.php");
 
              <?php 
                $result= $save->showdata();
-               $slno=1;
-               while($res= $result->fetch_assoc()){
-             //fetch data from db
-             echo 
-                '<tr>
-                <td>'.$slno.' </td>
-                <td>'.$res['name'].' </td>
-                <td>'.$res['email'].' </td>
-                <td>'.$res['status'].' </td>
-                  <td>
-                  
-                  <a  class="btn btn-info"> <i class="fa fa-solid fa-pen-to-square"></i> </a>
 
-                  <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal'.$res['id'].'" ><i class="fa-solid fa-trash"></i></button>
-                  </td>
-              </tr>';
-              $slno++;
-  
-              ?>
+            if($result->num_rows>0){
+
+                $slno=1;
+                while($res= $result->fetch_assoc()){
+              //fetch data from db
+              echo 
+                 '<tr>
+                 <td>'.$slno.' </td>
+                 <td>'.$res['name'].' </td>
+                 <td>'.$res['email'].' </td>
+                 <td>'.$res['status'].' </td>
+                   <td>
+                   
+                   <a  class="btn btn-info"> <i class="fa fa-solid fa-pen-to-square"></i> </a>
+ 
+                   <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal'.$res['id'].'" ><i class="fa-solid fa-trash"></i></button>
+                   </td>
+               </tr>';
+               $slno++;
+              
+
+               ?>
+
+    
+
+               
+            
+              
        
               <!-- Modal -->
    <div class="modal fade" id="exampleModal<?php echo $res['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -128,9 +138,15 @@ include("class.php");
 </div>
 
              
-           <?php    }
-        
-             ?>
+           <?php  
+         }
+        }
+         else{
+
+               echo " <td>data not found</td>";
+         }
+     
+     ?>
 
               </tbody>
        </table>
