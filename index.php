@@ -123,8 +123,10 @@ include("class.php");
                 
                    <td>
 
-                   <button  class="btn btn-info"> <i class="fa fa-solid fa-pen-to-square"></i>  </button> 
-                   <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal'.$res["id"].'" ><i class="fa-solid fa-trash"></i></button>
+                   <button  class="btn btn-info" data-bs-toggle="modal" data-bs-target="#update'.$res["id"].'"> <i class="fa fa-solid   fa-pen-to-square "></i>  </button> 
+
+
+                   <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete'.$res["id"].'" ><i class="fa-solid fa-trash"></i></button>
                    
                    </td> ';
 
@@ -149,8 +151,8 @@ include("class.php");
             
               
        
-              <!-- Modal -->
-   <div class="modal fade" id="exampleModal<?php echo $res['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <!-- Modal for delete item -->
+   <div class="modal fade" id="delete<?php echo $res['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -173,6 +175,67 @@ include("class.php");
   </div>
 </div>
 
+
+
+ 
+              <!-- Modal for update data -->
+
+              <div class="modal fade" id="update<?php echo $res['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+ 
+              <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+    
+
+      <form>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Name</label>
+    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name=""  value="<?php echo $res['name']; ?>" >
+  
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Email</label>
+    <input type="email" class="form-control" id="exampleInputPassword1" name="" value="<?php echo $res['email']; ?>">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Status</label>
+    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="" value="<?php echo $res['status']; ?>">
+ 
+  
+  
+  <button type="submit" class="btn btn-primary mt-2">Submit</button>
+</form>
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+         
+        <form method="GET">
+
+        <button class="btn btn-danger" name="deleteid" value="<?php echo $res['id']; ?>">Delete</button> 
+
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+              </div>
+              
+
+        
+   
+         
+    
              
            <?php  
          }
