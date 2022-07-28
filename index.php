@@ -40,6 +40,26 @@ include("class.php");
           $save->delete($id);
          }
 
+         if(isset($_GET['active'])){
+          $id=$_GET['active'];
+          echo $save->inactive($id);
+
+         }
+
+         if(isset($_GET['inactive'])){
+          $id=$_GET['inactive'];
+          echo $save->active($id);
+
+          if($active){
+            echo 'hlw world';
+          }
+          else{
+
+            echo 'nothing';
+          }
+
+         }
+
          
 
       ?>
@@ -112,19 +132,19 @@ include("class.php");
                    <td>
 
                    <button  class="btn btn-info"> <i class="fa fa-solid fa-pen-to-square"></i>  </button> 
-                   <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal'.$res['id'].'" ><i class="fa-solid fa-trash"></i></button>
+                   <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal'.$res["id"].'" ><i class="fa-solid fa-trash"></i></button>
                    
                    </td> ';
 
                    if($res['status']==1){
-                    echo '<td> Active </td> </tr>';
+                    echo '<td> <form method="GET"> <button class="btn btn-primary" name="active" value="'.$res["id"].'" >Active</button> </td> </tr>';
                    }
                    else if($res['status']==2){
-                    echo '<td> Inactive </td> </tr>';
+                    echo '<td> <button class="btn btn-info" name="inactive" value="'.$res["id"].'">Inactive</button> </form> </td> </tr>';
 
                    }
                    else{
-                    echo '<td> Suspend </td> </tr>';
+                    echo '<td> <button class="btn btn-danger">Suspend</button> </td> </tr>';
                    }
                $slno++;
               

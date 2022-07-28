@@ -64,11 +64,21 @@
         $update=$this->con->query("UPDATE tbl_student SET name=$name, email=$email WHERE id=$id ");
       }
 
+      function inactive($id){
 
+        $inactive=$this->con->query("UPDATE tbl_student SET status=2  WHERE id=$id ");
+  }  
 
+  function active($id){
 
+    $active=$this->con->query("UPDATE tbl_student SET status=1  WHERE id=$id ");
 
-  }          
-
+    return $active;
+}  
+   
+    
+  
+  //class er bracket      
+    }
 
 ?>
