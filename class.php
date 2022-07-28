@@ -73,7 +73,7 @@
 
     $active=$this->con->query("UPDATE tbl_student SET status=1  WHERE id=$id ");
 
-    return $active;
+
 }  
    
     

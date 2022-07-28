@@ -50,14 +50,6 @@ include("class.php");
           $id=$_GET['inactive'];
           echo $save->active($id);
 
-          if($active){
-            echo 'hlw world';
-          }
-          else{
-
-            echo 'nothing';
-          }
-
          }
 
          
@@ -137,10 +129,10 @@ include("class.php");
                    </td> ';
 
                    if($res['status']==1){
-                    echo '<td> <form method="GET"> <button class="btn btn-primary" name="active" value="'.$res["id"].'" >Active</button> </td> </tr>';
+                    echo '<td> <form method="GET"> <button class="btn btn-primary" name="active" value="'.$res["id"].'" >Active</button></form> </td> </tr>';
                    }
                    else if($res['status']==2){
-                    echo '<td> <button class="btn btn-info" name="inactive" value="'.$res["id"].'">Inactive</button> </form> </td> </tr>';
+                    echo '<td> <form method="GET">  <button class="btn btn-info" name="inactive" value="'.$res["id"].'">Inactive</button> </form>  </td> </tr>';
 
                    }
                    else{
