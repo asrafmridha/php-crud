@@ -44,7 +44,20 @@
        $result= $this->con->query("SELECT * FROM tbl_student");
        return $result;
       }
-  }
+
+      function delete($id){
+         
+        $deltitem= $this->con->query("DELETE FROM tbl_student WHERE id=$id");
+
+
+
+      }
+
+
+
+
+
+  }          
 
 
 ?>

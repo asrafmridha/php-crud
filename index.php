@@ -34,6 +34,14 @@ include("class.php");
         
          }
 
+         if(isset($_GET['deleteid'])){
+        
+           $id=$_GET['deleteid'];
+          $save->delete($id);
+         }
+
+         
+
       ?>
       <form method="POST" >
   <div class="form-group">
@@ -131,7 +139,12 @@ include("class.php");
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-         <a   href="delete.php?uid=<?php echo $res['id']; ?> " class="btn btn-danger">Delete</a> 
+         
+        <form method="GET">
+
+        <button class="btn btn-danger" name="deleteid" value="<?php echo $res['id']; ?>">Delete</button> 
+
+        </form>
       </div>
     </div>
   </div>
