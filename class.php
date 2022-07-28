@@ -47,10 +47,21 @@
 
       function delete($id){
          
-        $deltitem= $this->con->query("DELETE FROM tbl_student WHERE id=$id");
+        $deltitem= $this->con->query("DELETE FROM tbl_student WHERE id= $id");
 
+        if($deltitem){
 
+          echo "delete Successfully";
+        }
+        else{
 
+          echo "delete Failed";
+        }
+      }
+
+      function update($id,$name,$email){
+
+        $update=$this->con->query("UPDATE tbl_student SET name=$name, email=$email WHERE id=$id ");
       }
 
 

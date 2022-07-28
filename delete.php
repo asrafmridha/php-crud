@@ -1,6 +1,6 @@
- <?php
+<?php
 
-  $id=$_GET['uid'];
+ /*  $id=$_GET['uid'];
   $con=new mysqli("localhost","root","", "phpcrud");
 
    $con->query("DELETE FROM tbl_student
@@ -8,7 +8,7 @@
    
    ?> 
 
-  <?php echo "delete Successfully"; ?>
+  <?php echo "delete Successfully";  ?> */
 
 
   

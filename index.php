@@ -86,8 +86,9 @@ include("class.php");
          <th>#sl NO</th>
          <th>Name</th>
          <th>Email</th>
-         <th>Status</th>
+         
          <th>Action</th>
+         <th>Status</th>
 
          </tr>
 
@@ -107,14 +108,24 @@ include("class.php");
                  <td>'.$slno.' </td>
                  <td>'.$res['name'].' </td>
                  <td>'.$res['email'].' </td>
-                 <td>'.$res['status'].' </td>
+                
                    <td>
-                   
-                   <a  class="btn btn-info"> <i class="fa fa-solid fa-pen-to-square"></i> </a>
- 
+
+                   <button  class="btn btn-info"> <i class="fa fa-solid fa-pen-to-square"></i>  </button> 
                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal'.$res['id'].'" ><i class="fa-solid fa-trash"></i></button>
-                   </td>
-               </tr>';
+                   
+                   </td> ';
+
+                   if($res['status']==1){
+                    echo '<td> Active </td> </tr>';
+                   }
+                   else if($res['status']==2){
+                    echo '<td> Inactive </td> </tr>';
+
+                   }
+                   else{
+                    echo '<td> Suspend </td> </tr>';
+                   }
                $slno++;
               
 
